@@ -12,7 +12,7 @@ const NAV = {
 }
 
 // Screens with their own bottom bar (sticky CTA / chat composer) hide the nav.
-const HIDE_NAV = [/^\/r\//, /^\/chat\/.+/, /^\/demo/, /\/book$/, /^\/landlord\/new/]
+const HIDE_NAV = [/^\/r\//, /^\/chat\/.+/, /^\/demo/, /\/book$/, /^\/landlord\/new/, /^\/welcome/]
 
 export default function Layout() {
   const { user } = useAuth()
@@ -23,10 +23,11 @@ export default function Layout() {
 
   return (
     <div className="app">
-      {IS_DEMO && !pathname.startsWith('/demo') && (
+      {IS_DEMO && !pathname.startsWith('/demo') && !pathname.startsWith('/welcome') && (
         <div className="demo-banner">
           <span>Demo mode{user ? ` · ${user.full_name} (${user.role === 'tenant' ? 'renter' : user.role})` : ' · not signed in'}</span>
           <span className="row" style={{ gap: 6 }}>
+            <NavLink to="/welcome" style={{ color: '#fff', fontSize: 12, textDecoration: 'underline' }}>Welcome</NavLink>
             <NavLink to="/demo/post/LMN-1001" style={{ color: '#fff', fontSize: 12, textDecoration: 'underline' }}>Start story</NavLink>
             <button onClick={() => { if (sure) { api.resetDemo(); setSure(false) } else { setSure(true); setTimeout(() => setSure(false), 3000) } }}>{sure ? 'Tap again to reset' : 'Reset'}</button>
           </span>

@@ -47,11 +47,6 @@ export function TopBar({ title, back, right }) {
   )
 }
 
-export function Logo() {
-  return (
-    <span className="logo">
-      <span className="logo-mark"><Icon name="check" size={17} stroke={3.2} style={{ color: '#fff' }} /></span>
-      Lumnov
-    </span>
-  )
+export function Logo({ size = 26 }) {
+  return <img src="/brand/lumnov-wordmark.png" alt="Lumnov" height={size} style={{ display: 'block' }} />
 }

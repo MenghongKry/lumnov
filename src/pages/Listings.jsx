@@ -10,12 +10,21 @@ import { useAuth } from '../context/AuthContext'
 const PRICES = [[0, 'Any price'], [80, 'Under $80'], [150, 'Under $150'], [250, 'Under $250']]
 
 export default function Listings() {
-  const { user } = useAuth()
+  const { user, ready } = useAuth()
   const nav = useNavigate()
   const [area, setArea] = useState('')
   const [maxPrice, setMaxPrice] = useState(0)
   const [q, setQ] = useState('')
   const [rows, setRows] = useState(null)
+
+  useEffect(() => {
+    if (!ready || user) return
+    try {
+      if (!localStorage.getItem('lumnov_welcome_seen')) {
+        nav('/welcome', { replace: true })
+      }
+    } catch {}
+  }, [ready, user, nav])
 
   useEffect(() => {
     let alive = true

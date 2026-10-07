@@ -4,6 +4,7 @@ import { USE_HASH_ROUTER } from './lib/config'
 import Layout from './components/Layout'
 import RequireAuth from './components/RequireAuth'
 
+import Welcome from './pages/Welcome'
 import Listings from './pages/Listings'
 import ListingDetail from './pages/ListingDetail'
 import BookCheck from './pages/BookCheck'
@@ -15,6 +16,7 @@ import ChatInbox from './pages/ChatInbox'
 import ChatThread from './pages/ChatThread'
 import Profile from './pages/Profile'
 import MyListings from './pages/landlord/MyListings'
+
 import AddListing from './pages/landlord/AddListing'
 import BookingRequests from './pages/landlord/BookingRequests'
 import AdminQueue from './pages/admin/AdminQueue'
@@ -29,6 +31,7 @@ export default function App() {
         <Routes>
           <Route element={<Layout />}>
             {/* Public — no login needed */}
+            <Route path="/welcome" element={<Welcome />} />
             <Route path="/" element={<Listings />} />
             <Route path="/r/:code" element={<ListingDetail />} />
             <Route path="/demo/post/:code" element={<FeedPostDemo />} />

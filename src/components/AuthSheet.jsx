@@ -63,7 +63,9 @@ export function AuthForm({ defaultRole = 'tenant', defaultMode = 'signin', onDon
 export default function AuthSheet({ reason, defaultRole, onDone, onClose }) {
   return (
     <Sheet onClose={onClose} label="Sign in">
-      <h3>Sign in to Lumnov</h3>
+      <h3 style={{ display: 'flex', alignItems: 'center', gap: 7, flexWrap: 'wrap', marginBottom: 6 }}>
+        Sign in to&nbsp;<img src="/brand/lumnov-wordmark.png" alt="Lumnov" height={22} style={{ display: 'inline-block', verticalAlign: 'middle' }} />
+      </h3>
       <AuthForm reason={reason} defaultRole={defaultRole} onDone={onDone} />
     </Sheet>
   )

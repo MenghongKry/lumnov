@@ -91,6 +91,9 @@ export default function Profile() {
         </form>
 
         <button className="btn ghost block" style={{ marginTop: 16 }} onClick={logout}><Icon name="logout" size={18} /> Sign out</button>
+        <div style={{ textAlign: 'center', marginTop: 20 }}>
+          <Link to="/welcome" className="tiny" style={{ color: 'var(--ink-3)' }}>About Lumnov</Link>
+        </div>
       </main>
     </>
   )
